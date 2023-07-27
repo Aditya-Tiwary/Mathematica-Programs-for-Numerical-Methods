@@ -1,0 +1,173 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5201,        163]
+NotebookOptionsPosition[      4650,        144]
+NotebookOutlinePosition[      5121,        162]
+CellTagsIndexPosition[      5078,        159]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"bisection", "[", 
+   RowBox[{"a_", ",", "b_", ",", "f_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"N", "=", "100"}], ",", 
+      RowBox[{"PE", "=", 
+       RowBox[{"10", "^", 
+        RowBox[{"-", "4"}]}]}]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"f", "[", "a", "]"}], "*", 
+         RowBox[{"f", "[", "b", "]"}]}], ">", "0"}], ",", 
+       RowBox[{
+        RowBox[{
+        "Throw", "[", "\"\<no root possible: f(a) * f(b) > 0\>\"", "]"}], 
+        ";"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Abs", "[", 
+         RowBox[{"f", "[", "a", "]"}], "]"}], "<", "PE"}], ",", 
+       RowBox[{
+        RowBox[{"Throw", "[", "\"\<solution at a\>\"", "]"}], ";"}]}], "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Abs", "[", 
+         RowBox[{"f", "[", "b", "]"}], "]"}], "<", "PE"}], ",", 
+       RowBox[{
+        RowBox[{"Throw", "[", "\"\<solution at b\>\"", "]"}], ";"}]}], "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"x", "=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"a", "+", "b"}], ")"}], "/", "2"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"n", "=", "1"}], ",", 
+       RowBox[{"n", "<=", "N"}], ",", 
+       RowBox[{"n", "++"}], ",", 
+       RowBox[{
+        RowBox[{"p", "=", 
+         RowBox[{
+          RowBox[{"f", "[", "a", "]"}], "*", 
+          RowBox[{"f", "[", "x", "]"}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"p", "<", "0"}], ",", 
+          RowBox[{
+           RowBox[{"b", "=", "x"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"x", "=", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"a", "+", "x"}], ")"}], "/", "2"}]}], ";"}], ",", 
+          RowBox[{
+           RowBox[{"a", "=", "x"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"x", "=", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"x", "+", "b"}], ")"}], "/", "2"}]}], ";"}]}], "]"}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Abs", "[", 
+            RowBox[{"f", "[", "x", "]"}], "]"}], "<=", "PE"}], ",", 
+          RowBox[{
+           RowBox[{"Break", "[", "]"}], ";"}]}], "]"}], ";"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "n"}], "}"}]}]}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "x_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"x", "^", "3"}], "-", 
+    RowBox[{"2", "x"}], "-", "5"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"a", "=", "1"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"b", "=", "2"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"result", "=", 
+   RowBox[{"Catch", "[", 
+    RowBox[{"bisection", "[", 
+     RowBox[{"a", ",", "b", ",", "f"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Head", "[", "result", "]"}], "===", "String"}], ",", 
+   RowBox[{
+    RowBox[{"Print", "[", "result", "]"}], ";"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"root", ",", "iterations"}], "}"}], "=", "result"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Approximate root: \>\"", ",", "root"}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Number of iterations: \>\"", ",", "iterations"}], "]"}], 
+    ";"}]}], "]"}], "\n"}], "Input",
+ CellChangeTimes->{{3.8969606803287086`*^9, 3.896960683791368*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"e34a1fa1-a8d3-4e84-acce-65a7731f5d78"],
+
+Cell[BoxData["\<\"no root possible: f(a) * f(b) > 0\"\>"], "Print",
+ CellChangeTimes->{3.896960684557358*^9},
+ CellLabel->
+  "During evaluation of \
+In[11]:=",ExpressionUUID->"3c1af20f-058c-4f29-a200-5a5c2bf96819"]
+}, Open  ]]
+},
+WindowSize->{1152., 585.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+Magnification:>1.3 Inherited,
+FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (November 18, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c066370a-a3c1-4299-b30d-f79f61df7d1c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 3837, 113, 482, "Input",ExpressionUUID->"e34a1fa1-a8d3-4e84-acce-65a7731f5d78"],
+Cell[4420, 137, 214, 4, 28, "Print",ExpressionUUID->"3c1af20f-058c-4f29-a200-5a5c2bf96819"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

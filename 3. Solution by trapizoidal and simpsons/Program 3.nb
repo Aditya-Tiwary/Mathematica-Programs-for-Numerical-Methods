@@ -1,0 +1,244 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7317,        236]
+NotebookOptionsPosition[      6488,        213]
+NotebookOutlinePosition[      6923,        230]
+CellTagsIndexPosition[      6880,        227]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Example", ":", "5.11"}], "*)"}], 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+        "Solve", " ", "the", " ", "definite", " ", "integral", " ", "by", " ",
+          "1"}], ")"}], " ", "trapezoidal", " ", "rule"}], ",", "2"}], ")"}], 
+    " ", 
+    RowBox[{"Simpson", "'"}], "s", " ", "rule"}], "*)"}], 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Exact", " ", "value", " ", "of", " ", "the", " ", "integral", " ", "is", 
+     " ", "ln", " ", "2"}], "=", "0.693147"}], "*)"}], 
+  RowBox[{"(*", 
+   RowBox[{"Define", " ", "the", " ", "function"}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"F", "[", "x_", "]"}], ":=", 
+    RowBox[{"1", "/", 
+     RowBox[{"(", 
+      RowBox[{"1", "+", "x"}], ")"}]}]}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"1", ")"}], " ", "Trapezoidal", " ", "rule"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"a", "=", "0"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"b", "=", "1"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"n", "=", "1"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"h", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"b", "-", "a"}], ")"}], "/", "n"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sum", "=", 
+     RowBox[{
+      RowBox[{"F", "[", "a", "]"}], "+", 
+      RowBox[{"F", "[", "b", "]"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "++"}], ",", 
+      RowBox[{"sum", "+=", 
+       RowBox[{"2", " ", 
+        RowBox[{"F", "[", 
+         RowBox[{"a", "+", 
+          RowBox[{"i", " ", "h"}]}], "]"}]}]}]}], "]"}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"I_trapezoidal", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"h", "/", "2"}], ")"}], " ", "sum"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Trapezoidal rule: \>\"", ",", "I_trapezoidal"}], "]"}], 
+    ";"}], "\n", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Error: \>\"", ",", 
+      RowBox[{"Abs", "[", 
+       RowBox[{"0.75", "-", "0.693147"}], "]"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"2", ")"}], " ", 
+     RowBox[{"Simpson", "'"}], "s", " ", "rule"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", "=", "2"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"h", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"b", "-", "a"}], ")"}], "/", "n"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sum1", "=", 
+     RowBox[{
+      RowBox[{"F", "[", "a", "]"}], "+", 
+      RowBox[{"F", "[", "b", "]"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"sum2", "=", "0"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "++"}], ",", 
+      RowBox[{
+       RowBox[{"sum2", "+=", 
+        RowBox[{"F", "[", 
+         RowBox[{"a", "+", 
+          RowBox[{"i", " ", "h"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"sum1", "+=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"EvenQ", "[", "i", "]"}], ",", 
+          RowBox[{"2", " ", 
+           RowBox[{"F", "[", 
+            RowBox[{"a", "+", 
+             RowBox[{"i", " ", "h"}]}], "]"}]}], ",", 
+          RowBox[{"4", " ", 
+           RowBox[{"F", "[", 
+            RowBox[{"a", "+", 
+             RowBox[{"i", " ", "h"}]}], "]"}]}]}], "]"}]}]}]}], "]"}], ";"}], 
+   "\n", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"I_simpson", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"h", "/", "3"}], ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{"sum1", "+", 
+        RowBox[{"2", " ", "sum2"}]}], ")"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Simpson's rule: \>\"", ",", "I_simpson"}], "]"}], ";"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"\"\<Error: \>\"", ",", 
+      RowBox[{"Abs", "[", 
+       RowBox[{"0.694444", "-", "0.693147"}], "]"}]}], "]"}], ";"}], 
+   "\n"}]}]], "Input",
+ CellChangeTimes->{{3.8969579200114875`*^9, 3.8969579200124903`*^9}},
+ CellLabel->"In[92]:=",ExpressionUUID->"1afb2542-77cd-4427-83df-d66703b87f77"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Trapezoidal rule: \"\>", "\[InvisibleSpace]", 
+   "\[ImaginaryI]_trapezoidal"}],
+  SequenceForm["Trapezoidal rule: ", 
+   Pattern[I, 
+    Blank[$CellContext`trapezoidal]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.896957920614545*^9},
+ CellLabel->
+  "During evaluation of \
+In[92]:=",ExpressionUUID->"128e5650-3996-4f0e-b835-833b4afcf6ac"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Error: \"\>", "\[InvisibleSpace]", "0.05685300000000004`"}],
+  SequenceForm["Error: ", 0.05685300000000004],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.896957920630788*^9},
+ CellLabel->
+  "During evaluation of \
+In[92]:=",ExpressionUUID->"2b458a96-6a8c-4e33-b811-401f64521cac"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Simpson's rule: \"\>", "\[InvisibleSpace]", 
+   "\[ImaginaryI]_simpson"}],
+  SequenceForm["Simpson's rule: ", 
+   Pattern[I, 
+    Blank[$CellContext`simpson]]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8969579206547203`*^9},
+ CellLabel->
+  "During evaluation of \
+In[92]:=",ExpressionUUID->"55321057-b8f9-458a-a6da-40925bc88457"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Error: \"\>", "\[InvisibleSpace]", "0.0012969999999999926`"}],
+  SequenceForm["Error: ", 0.0012969999999999926`],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.896957920664075*^9},
+ CellLabel->
+  "During evaluation of \
+In[92]:=",ExpressionUUID->"39a9ac34-2edd-4e25-9d1b-9416c60c65a4"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1141.2, 574.8},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>0.8 Inherited,
+FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (November 18, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"11209397-3322-4518-9747-54d5485aa1f2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 4387, 139, 452, "Input",ExpressionUUID->"1afb2542-77cd-4427-83df-d66703b87f77"],
+Cell[CellGroupData[{
+Cell[4992, 165, 398, 11, 18, "Print",ExpressionUUID->"128e5650-3996-4f0e-b835-833b4afcf6ac"],
+Cell[5393, 178, 334, 8, 18, "Print",ExpressionUUID->"2b458a96-6a8c-4e33-b811-401f64521cac"],
+Cell[5730, 188, 388, 11, 18, "Print",ExpressionUUID->"55321057-b8f9-458a-a6da-40925bc88457"],
+Cell[6121, 201, 339, 8, 18, "Print",ExpressionUUID->"39a9ac34-2edd-4e25-9d1b-9416c60c65a4"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
