@@ -11,7 +11,7 @@ This repository contains Mathematica programs for various numerical methods. Eac
 7. Second Order Runge-Kutta Method
 8. Regula Falsi Method
 
-## Method Descriptions
+## Method Descriptions & Screenshots
 
 ### 1. Newton Raphson Method
 Folder: 1. Newton Raphson Method
